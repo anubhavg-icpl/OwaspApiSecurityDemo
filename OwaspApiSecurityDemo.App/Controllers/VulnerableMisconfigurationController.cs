@@ -7,7 +7,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/vulnerable/misconfig")]
     public sealed class VulnerableMisconfigurationController : ApiController
     {
-        // Presenter patch note:
+        // Anubhav's patch note:
         // Show this response first to explain why raw exception details should never cross the API boundary.
         // Then switch to SecureMisconfigurationController.Error() to show the runnable patch:
         // generic message to the client, correlation ID for support, and full details kept server-side only.
@@ -36,7 +36,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("headers")]
         public IHttpActionResult Headers()
         {
-            // Presenter patch note:
+            // Anubhav's patch note:
             // This endpoint intentionally relies on missing defaults.
             // The patch is centralized in DemoSecurityHeadersHandler so every /api/secure route
             // automatically returns HSTS, CSP, frame protection, content-type protection, and no-store.
@@ -51,7 +51,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("default-credentials")]
         public IHttpActionResult DefaultCredentials()
         {
-            // Presenter patch note:
+            // Anubhav's patch note:
             // This simulates the classic "admin/admin123" mistake.
             // The secure pair documents the fix: unique deployment secrets and secret-manager-backed storage.
             return Ok(new

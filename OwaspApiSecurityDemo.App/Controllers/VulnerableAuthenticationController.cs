@@ -8,7 +8,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/vulnerable/auth")]
     public sealed class VulnerableAuthenticationController : ApiController
     {
-        // Presenter patch note:
+        // Anubhav's patch note:
         // This vulnerable login demonstrates three issues in one place:
         // 1. credentials travel in the URL,
         // 2. there is no lockout or throttling,
@@ -40,7 +40,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("validate")]
         public IHttpActionResult Validate(TokenValidationRequest request)
         {
-            // Presenter patch note:
+            // Anubhav's patch note:
             // This trusts whatever claims arrive in the token payload.
             // The secure validator enforces signature, issuer, audience, and expiration checks.
             TokenPrincipal principal;
@@ -68,7 +68,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("credential-transport")]
         public IHttpActionResult CredentialTransport(string username, string password)
         {
-            // Presenter patch note:
+            // Anubhav's patch note:
             // Use this to explain how URLs leak into browser history, reverse-proxy logs, and monitoring systems.
             return Ok(new
             {
