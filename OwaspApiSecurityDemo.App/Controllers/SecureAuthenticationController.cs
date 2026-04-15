@@ -8,6 +8,9 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/secure/auth")]
     public sealed class SecureAuthenticationController : ApiController
     {
+        // Runnable patch for the vulnerable login flow:
+        // credentials move into the request body, login attempts are constrained,
+        // and the response issues a short-lived signed token.
         [HttpPost]
         [Route("login")]
         public IHttpActionResult Login(LoginRequest request)
@@ -48,6 +51,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("validate")]
         public IHttpActionResult Validate(TokenValidationRequest request)
         {
+            // Runnable patch for token validation:
+            // fail closed unless the token passes signature, issuer, audience, and expiry checks.
             TokenPrincipal principal;
             string error;
 
@@ -73,6 +78,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("me")]
         public IHttpActionResult Me()
         {
+            // Runnable patch for downstream API authorization:
+            // every protected endpoint resolves the caller from a validated bearer token.
             DemoUser user;
             string error;
             if (!DemoAuthContext.TryGetSecureUser(Request, out user, out error))

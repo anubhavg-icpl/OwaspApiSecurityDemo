@@ -7,6 +7,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/secure/access")]
     public sealed class SecureAccessControlController : ApiController
     {
+        // Runnable patch for BOLA:
+        // resolve the caller from a validated token and reject cross-user access unless the caller is an admin.
         [HttpGet]
         [Route("orders/{userId:int}")]
         public IHttpActionResult Orders(int userId)
@@ -37,6 +39,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("admin/export")]
         public IHttpActionResult AdminExport()
         {
+            // Runnable patch for the admin export:
+            // fail closed unless the authenticated caller has the admin role.
             DemoUser caller;
             string error;
             if (!DemoAuthContext.TryGetSecureUser(Request, out caller, out error))

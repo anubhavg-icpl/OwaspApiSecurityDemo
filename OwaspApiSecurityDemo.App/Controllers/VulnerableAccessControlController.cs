@@ -6,6 +6,9 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/vulnerable/access")]
     public sealed class VulnerableAccessControlController : ApiController
     {
+        // Presenter patch note:
+        // This is the classic BOLA example: the API trusts the path parameter and never checks ownership.
+        // Compare it to SecureAccessControlController.Orders() to show the object-level authorization patch.
         [HttpGet]
         [Route("orders/{userId:int}")]
         public IHttpActionResult Orders(int userId)
@@ -23,6 +26,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("admin/export")]
         public IHttpActionResult AdminExport()
         {
+            // Presenter patch note:
+            // This is a vertical privilege escalation demo: an admin action is exposed without a role check.
             return Ok(new
             {
                 exportedUsers = DemoStore.GetPublicUsers(),

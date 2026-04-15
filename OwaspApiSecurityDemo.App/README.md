@@ -59,6 +59,21 @@ For the cleanest live demo:
 3. Run `.\Scripts\run-end-to-end-demo.cmd`
 4. If needed, stop the server with `.\Scripts\stop-demo-server.cmd`
 
+## Patch walkthrough in code
+
+If you open the controllers during the demo, each vulnerable and secure pair now includes presenter comments that explain:
+
+- what the vulnerable endpoint is doing wrong
+- what the patch should change
+- where the runnable secure version lives
+
+Suggested code pairs to open while speaking:
+
+- `Controllers\VulnerableMisconfigurationController.cs` -> `Controllers\SecureMisconfigurationController.cs`
+- `Controllers\VulnerableAuthenticationController.cs` -> `Controllers\SecureAuthenticationController.cs`
+- `Controllers\VulnerableInjectionController.cs` -> `Controllers\SecureInjectionController.cs`
+- `Controllers\VulnerableAccessControlController.cs` -> `Controllers\SecureAccessControlController.cs`
+
 ## Suggested live walkthrough
 
 ### 1. Misconfiguration

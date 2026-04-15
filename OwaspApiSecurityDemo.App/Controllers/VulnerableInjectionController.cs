@@ -9,6 +9,10 @@ namespace OwaspApiSecurityDemo.App.Controllers
     [RoutePrefix("api/vulnerable/injection")]
     public sealed class VulnerableInjectionController : ApiController
     {
+        // Presenter patch note:
+        // The search term is treated like trusted SQL, so payloads like 1 OR 1=1--
+        // change the meaning of the query. Switch to SecureInjectionController.SqlUsers()
+        // to show the parameterized version immediately after this.
         [HttpGet]
         [Route("sql-users")]
         public IHttpActionResult SqlUsers(string search)
@@ -28,6 +32,8 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("nosql-login")]
         public async Task<IHttpActionResult> NoSqlLogin()
         {
+            // Presenter patch note:
+            // This raw body path lets JSON operators such as $gt act like code instead of plain data.
             var rawBody = await Request.Content.ReadAsStringAsync();
             var user = DemoStore.VulnerableNoSqlLogin(rawBody);
 
@@ -51,6 +57,9 @@ namespace OwaspApiSecurityDemo.App.Controllers
         [Route("command-preview")]
         public IHttpActionResult CommandPreview(string fileName)
         {
+            // Presenter patch note:
+            // The demo never executes the command, but it shows exactly how concatenation turns
+            // a harmless file name parameter into a shell payload.
             var command = "convert " + (fileName ?? string.Empty) + " -resize 50% output.png";
 
             return Ok(new
