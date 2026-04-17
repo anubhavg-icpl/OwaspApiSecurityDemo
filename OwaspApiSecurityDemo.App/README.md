@@ -38,17 +38,28 @@ These are proper Windows batch scripts for a command-line demo:
 ```cmd
 .\Scripts\start-demo-server.cmd
 .\Scripts\run-end-to-end-demo.cmd
+.\Scripts\run-misconfiguration-demo.cmd
+.\Scripts\run-authentication-demo.cmd
+.\Scripts\run-injection-demo.cmd
+.\Scripts\run-access-control-demo.cmd
 .\Scripts\stop-demo-server.cmd
 ```
 
-`run-end-to-end-demo.cmd` is the main presenter script. It:
+`run-end-to-end-demo.cmd` is the full presenter walkthrough. The focused scripts run just one category each:
+
+- `run-misconfiguration-demo.cmd` -> A05 Security Misconfiguration
+- `run-authentication-demo.cmd` -> A02 Authentication
+- `run-injection-demo.cmd` -> A03 Injection
+- `run-access-control-demo.cmd` -> A01 Broken Access Control
+
+All runner scripts:
 
 - starts the server if it is not already running
 - sends the requests in presentation order
 - prints the exact CLI request/response flow
 - stops the server at the end only if the script started it
 
-Use it when you want a full dry run or a guided live demo from the command line.
+Use the end-to-end script for a full dry run, or pick an individual script when you only want one demo section.
 
 ## Recommended presentation flow
 
