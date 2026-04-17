@@ -31,6 +31,22 @@ dotnet run --project .\OwaspApiSecurityDemo.App\OwaspApiSecurityDemo.App.csproj
 
 Base URL: `http://localhost:5050/`
 
+Browser demo page: `http://localhost:5050/browser`
+
+## Tests
+
+```powershell
+dotnet test .\OwaspApiSecurityDemo.App.Tests\OwaspApiSecurityDemo.App.Tests.csproj
+```
+
+The test project includes codebase-visible unit cases for:
+
+- secure auth lockout behavior
+- vulnerable vs secure token validation
+- vulnerable SQL and NoSQL injection behavior
+- secure security-header handling
+- broken access control vs protected access control
+
 ## Batch scripts
 
 These are proper Windows batch scripts for a command-line demo:
@@ -69,6 +85,31 @@ For the cleanest live demo:
 2. Keep the app running in the background
 3. Run `.\Scripts\run-end-to-end-demo.cmd`
 4. If needed, stop the server with `.\Scripts\stop-demo-server.cmd`
+
+## Timed demo checklists
+
+### 30 second demo
+
+1. Open `http://localhost:5050/browser`
+2. Click `Vulnerable headers`
+3. Click `Secure headers`
+4. Point out the missing vs centralized security headers
+
+### 60 second demo
+
+1. Open `http://localhost:5050/browser`
+2. Click `Login in URL`
+3. Click `Secure login`
+4. Click `BOLA order lookup`
+5. Click `Secure order lookup`
+
+### 90 second demo
+
+1. Open `http://localhost:5050/browser`
+2. Click `Verbose error` then `Safe error`
+3. Click `Login in URL` then `Secure login`
+4. Click `SQL injection` then `Parameterized SQL`
+5. Click `BOLA order lookup` then `Secure order lookup`
 
 ## Patch walkthrough in code
 

@@ -12,6 +12,7 @@ namespace OwaspApiSecurityDemo.App.Controllers
             {
                 message = "OWASP API Security presentation demo",
                 note = "Use the vulnerable endpoints to show what goes wrong, then repeat with the secure endpoints.",
+                browserDemo = "/browser",
                 categories = new[]
                 {
                     "A05 Security Misconfiguration",

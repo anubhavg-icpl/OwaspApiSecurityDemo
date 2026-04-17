@@ -149,6 +149,14 @@ namespace OwaspApiSecurityDemo.App.Infrastructure
             return null;
         }
 
+        public static void ResetFailedLoginTracking()
+        {
+            lock (AuthGate)
+            {
+                FailedLogins.Clear();
+            }
+        }
+
         private static FailedLoginState GetState(string username)
         {
             var key = username ?? string.Empty;

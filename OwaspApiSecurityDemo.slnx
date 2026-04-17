@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="OwaspApiSecurityDemo.App/OwaspApiSecurityDemo.App.csproj" />
+  <Project Path="OwaspApiSecurityDemo.App.Tests/OwaspApiSecurityDemo.App.Tests.csproj" />
 </Solution>
